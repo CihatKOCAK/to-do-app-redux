@@ -30,9 +30,22 @@ export const todosSlice = createSlice({
     },
     clearCompleted: (state) => {
       state.items = state.items.filter((todo) => !todo.completed);
-    },  
+    },
   },
 });
+
+export const selectTodos = (state) => state.todos.items;
+
+export const selectFilteredTodos = (state) => {
+  if (state.todos.activeFilter === "all") {
+    return state.todos.items;
+  }
+  return state.todos.items.filter((todo) =>
+    state.todos.activeFilter === "active" ? !todo.completed : todo.completed
+  );
+};
+
+export const selectActiveFilter = (state) => state.todos.activeFilter;
 
 export const { addTodo, toggleTodo, destroyTodo, setFilter, clearCompleted } =
   todosSlice.actions;

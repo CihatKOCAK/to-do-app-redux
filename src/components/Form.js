@@ -8,6 +8,7 @@ export default function Form() {
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
+    if(!text) return;
     e.preventDefault();
     //dispatch(addTodo({ id: Date.now(), text, completed: false }));
     dispatch(addTodo({ id: nanoid(), text, completed: false }));
