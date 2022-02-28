@@ -4,19 +4,18 @@ export default function ContentFooter() {
   return (
     <footer className="footer">
       <span className="todo-count">
-        <strong>2</strong>{" "}
+        <strong>2</strong>
         items left
       </span>
-
       <ul className="filters">
         <li>
-          <a className="selected">All</a>
+          <a href="#" className="selected">All</a>
         </li>
         <li>
-          <a>Active</a>
+          <a  href="#">Active</a>
         </li>
         <li>
-          <a>Completed</a>
+          <a  href="#">Completed</a>
         </li>
       </ul>
 
