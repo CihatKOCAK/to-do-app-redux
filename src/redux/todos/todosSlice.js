@@ -8,6 +8,7 @@ export const todosSlice = createSlice({
       { id: "2", text: "Learn Redux", completed: false },
       { id: "3", text: "Have a life!", completed: true },
     ],
+    activeFilter: "all",
   },
   reducers: {
     addTodo: (state, action) => {
@@ -17,8 +18,22 @@ export const todosSlice = createSlice({
         completed: action.payload.completed,
       });
     },
+    toggleTodo: (state, action) => {
+      const todo = state.items.find((todo) => todo.id === action.payload.id);
+      todo.completed = !todo.completed;
+    },
+    destroyTodo: (state, action) => {
+      state.items = state.items.filter((todo) => todo.id !== action.payload.id);
+    },
+    setFilter: (state, action) => {
+      state.activeFilter = action.payload;
+    },
+    clearCompleted: (state) => {
+      state.items = state.items.filter((todo) => !todo.completed);
+    },  
   },
 });
 
-export const { addTodo } = todosSlice.actions;
+export const { addTodo, toggleTodo, destroyTodo, setFilter, clearCompleted } =
+  todosSlice.actions;
 export default todosSlice.reducer;

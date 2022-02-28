@@ -5,7 +5,6 @@ import { nanoid } from "@reduxjs/toolkit";
 
 export default function Form() {
   const [text, setText] = useState("");
-  console.log(Date.now());
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
