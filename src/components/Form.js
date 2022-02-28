@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../redux/todos/todosSlice";
-import { nanoid } from "@reduxjs/toolkit";
+
 
 export default function Form() {
   const [text, setText] = useState("");
@@ -11,7 +11,7 @@ export default function Form() {
     if(!text) return;
     e.preventDefault();
     //dispatch(addTodo({ id: Date.now(), text, completed: false }));
-    dispatch(addTodo({ id: nanoid(), text, completed: false }));
+    dispatch(addTodo({ text }));
     setText("");
   };
   return (
