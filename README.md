@@ -1,3 +1,7 @@
+##Techs
+
+react - redux - redux toolkit - axios - expressjs - nanoid
+
 
 ## Bilgisayarınızda Çalıştırın
 
