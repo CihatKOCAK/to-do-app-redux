@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setFilter, clearCompleted,selectTodos, selectActiveFilter } from "../redux/todos/todosSlice";
+import {
+  setFilter,
+  clearCompleted,
+  selectTodos,
+  selectActiveFilter,
+} from "../redux/todos/todosSlice";
 
 export default function ContentFooter() {
-
   const dispatch = useDispatch();
 
- // const activeFilter = useSelector((state) => state.todos.activeFilter);
+  // const activeFilter = useSelector((state) => state.todos.activeFilter);
   const activeFilter = useSelector(selectActiveFilter);
 
-  
   const items = useSelector(selectTodos);
   const completedCount = items.filter((item) => item.completed).length;
   const activeCount = items.length - completedCount;
 
+  useEffect(() => {
+    localStorage.setItem("activeFilter", activeFilter);
+  }, [activeFilter]);
   return (
     <footer className="footer">
       <span className="todo-count">
@@ -49,7 +55,12 @@ export default function ContentFooter() {
           </a>
         </li>
       </ul>
-      <button className="clear-completed" onClick={() => dispatch(clearCompleted())}>Clear completed</button>
+      <button
+        className="clear-completed"
+        onClick={() => dispatch(clearCompleted())}
+      >
+        Clear completed
+      </button>
     </footer>
   );
 }
