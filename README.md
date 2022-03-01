@@ -1,4 +1,48 @@
 
+## Bilgisayarınızda Çalıştırın
+
+Projeyi klonlayın
+
+```bash
+  git clone https://github.com/CihatKOCAK/to-do-app-redux.git
+```
+
+API dizinine gidin
+
+```bash
+  cd api
+```
+
+Gerekli paketleri yükleyin
+
+```bash
+  npm i
+```
+
+Sunucuyu çalıştırın
+
+```bash
+  npm run server
+```
+
+  client dizinine gidin
+
+```bash
+  cd client
+```
+
+Gerekli paketleri yükleyin
+
+```bash
+  yarn
+```
+
+Sunucuyu çalıştırın
+
+```bash
+  yarn start
+```
+
 ## API Kullanımı
 
 #### Tüm öğeleri getir
