@@ -4,6 +4,7 @@ import {
   addTodoAsync,
   toggleTodoAsync,
   removeTodoAsync,
+  clearCompletedAsync,
 } from "./services";
 
 export const todosSlice = createSlice({
@@ -21,9 +22,6 @@ export const todosSlice = createSlice({
   reducers: {
     setFilter: (state, action) => {
       state.activeFilter = action.payload;
-    },
-    clearCompleted: (state) => {
-      state.items = state.items.filter((todo) => !todo.completed);
     },
   },
   // Thunks
@@ -67,6 +65,13 @@ export const todosSlice = createSlice({
       const filtered = state.items.filter ((item) => item.id !== id);
       state.items = filtered;
     },
+
+    //clear completed
+    [clearCompletedAsync.fulfilled]: (state, action) => {
+      const filtered = state.items.filter((item) => !item.completed);
+      state.items = filtered;
+    }
+
   },
 });
 
@@ -83,5 +88,5 @@ export const selectFilteredTodos = (state) => {
 
 export const selectActiveFilter = (state) => state.todos.activeFilter;
 
-export const { addTodo, setFilter, clearCompleted } = todosSlice.actions;
+export const { addTodo, setFilter } = todosSlice.actions;
 export default todosSlice.reducer;

@@ -8,6 +8,16 @@ export const getTodosAsync = createAsyncThunk(
   }
 );
 
+export const clearCompletedAsync = createAsyncThunk(
+  "todos/clearCompletedAsync",
+  async () => {
+    const res = await axios.delete(
+      `${process.env.REACT_APP_API_BASE_ENDPOINT}/todos/clearcompleted`
+    );
+    return res.data;
+  }
+);
+
 export const addTodoAsync = createAsyncThunk(
   "todos/addTodoAsync",
   async (text) => {
