@@ -58,22 +58,23 @@ app.patch("/todos/:id", (req, res) => {
   return res.send(todos[index]);
 });
 
+//multible delete request
+app.delete("/todos/clearcompleted", (req, res) => {
+  const completed = todos.filter((todo) => todo.completed === true);
+  completed.map((todo) => todos.splice(todos.indexOf(todo), 1));
+  return res.send(todos);
+});
+
 app.delete("/todos/:id", (req, res) => {
   const id = req.params.id;
   const index = todos.findIndex((todo) => todo.id == id);
   if (index > -1) {
     todos.splice(index, 1);
   }
-
   res.send(todos);
 });
 
-//multible delete request
-app.delete("/todos/clearcompleted", (req, res) => {
-  const completed = todos.filter((todo) => todo.completed === true);
-  completed.map((todo) => todos.splice(todos.indexOf(todo), 1));
-  res.send(todos);
-});
+
 
 const PORT = 7000;
 
